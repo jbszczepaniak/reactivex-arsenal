@@ -11,7 +11,7 @@ describe('doing stuff in subscribe, or as an operator', function() {
     let flag = true;
 
     subj.subscribe(
-      (x) => {
+      (x: number) => {
         counter += x / 2;
         console.log('The value is ', x, ' the counter is: ', counter);
         if (flag) {
@@ -41,7 +41,7 @@ describe('doing stuff in subscribe, or as an operator', function() {
     let flag = true;
 
     subj
-      .do((x) => counter += x / 2)
+      .do((x: number) => counter += x / 2)
       .do((x) => console.log('The value is ', x, ' the counter is: ', counter))
       .do(() => {if (flag) {random_fun(); }})
     .subscribe(
