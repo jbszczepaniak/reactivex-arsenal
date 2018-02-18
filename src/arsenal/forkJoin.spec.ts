@@ -14,6 +14,27 @@ describe('forkJoin', function() {
     expect(results).toEqual([[3, 4]]);
   });
 
+  it('should use last yielded values of source observables before their completion', () => {
+    const observable1 = Observable.create(
+      observer => {
+        observer.next(1);
+        observer.next(2);
+        observer.complete();
+      }
+    );
+    const observable2 = Observable.create(
+      observer => {
+        observer.next('one');
+        observer.next('two');
+        observer.complete();
+      }
+    );
+
+    Observable.forkJoin(observable1, observable2)
+      .subscribe(x => expect(x).toEqual([2, 'two']));
+  });
+
+
   it('should not yield any value if at least one of provided observables does not complete', () => {
     const results = [];
     const observable1 = Observable.create(
