@@ -19,7 +19,6 @@ describe('catch', () => {
         functionSpy();
         return Observable.empty();
       })
-      .do(x => console.log(x))
       .subscribe();
 
     expect(functionSpy).toHaveBeenCalled();
