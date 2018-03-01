@@ -62,6 +62,15 @@ describe('catch', () => {
   });
 
   it('can retry Observable that caused error');
-  it('should return fallback observable when it catches error');
+
+  it('should return fallback observable when it catches error', () => {
+    const fallback = Observable.create(observer => observer.next(1));
+    const observable = Observable.throw(new Error());
+
+    observable
+      .catch(err => fallback)
+      .subscribe(x => expect(x).toEqual(1));
+  });
+
   it('should work with pipe with name catchError');
 });
