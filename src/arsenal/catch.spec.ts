@@ -83,7 +83,7 @@ describe('catch', () => {
     expect(functionSpy).toHaveBeenCalled();
   });
 
-  fit('can retry Observable that caused error', () => {
+  it('can retry Observable that caused error', () => {
 
   });
 
