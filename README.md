@@ -7,6 +7,8 @@ Angular 5 project was used here as a convenience.
 
 Clone repository and run `npm install`
 
+
 ## Running unit tests
+
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
