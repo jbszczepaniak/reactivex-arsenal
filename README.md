@@ -1,6 +1,11 @@
 # ReactivexArsenal
 
-Sandbox/playground for RxJS. All important files are placed under `src/arsenal`. Angular 5 project was used here as a convenience. 
+Sandbox/playground for RxJS. All of examples are presented as unit tests. Tests of different rxjs operators are placed under `src/arsenal`.
+Angular 5 project was used here as a convenience. 
+
+## Installation
+
+Clone repository and run `npm install`
 
 ## Running unit tests
 
