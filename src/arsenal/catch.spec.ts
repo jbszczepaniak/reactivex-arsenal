@@ -61,8 +61,6 @@ describe('catch', () => {
     expect(errorObserverFunctionSpy).toHaveBeenCalled();
   });
 
-  it('can retry Observable that caused error');
-
   it('should return fallback observable when it catches error', () => {
     const fallback = Observable.create(observer => observer.next(1));
     const observable = Observable.throw(new Error());
@@ -72,5 +70,18 @@ describe('catch', () => {
       .subscribe(x => expect(x).toEqual(1));
   });
 
-  it('should work with pipe with name catchError');
+  it('should work with pipe with name catchError', () => {
+    const observable = Observable.concat(Observable.of(1), Observable.throw(new Error()));
+
+    observable.pipe(
+      catchError(err => {
+        functionSpy();
+        return Observable.empty();
+      })
+    ).subscribe();
+
+    expect(functionSpy).toHaveBeenCalled();
+  });
+
+  it('can retry Observable that caused error');
 });
